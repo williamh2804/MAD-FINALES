@@ -112,6 +112,7 @@ nav.scrolled .nav-logo img { filter: brightness(1.15); }
 .hero {
   height: 100vh; position: relative; overflow: hidden;
   display: flex; align-items: flex-end;
+  padding-top: 40px;
 }
 .hero-bg {
   position: absolute; inset: 0;
@@ -280,16 +281,16 @@ nav.scrolled .nav-logo img { filter: brightness(1.15); }
 
 .mc-img {
   width: 100%; height: 240px; object-fit: cover;
-  filter: grayscale(100%) brightness(.75);
+  filter: brightness(.88);
   transition: transform .5s ease, filter .5s ease;
   display: block;
 }
 .mc-ph {
   width: 100%; height: 240px; background: #111;
   display: flex; align-items: center; justify-content: center;
-  font-size: 56px; filter: grayscale(100%);
+  font-size: 56px;
 }
-.mc:hover .mc-img { transform: scale(1.04); filter: grayscale(80%) brightness(.6); }
+.mc:hover .mc-img { transform: scale(1.04); filter: brightness(.72); }
 
 .mc-body { padding: 22px 24px 24px; }
 .mc-tag {
@@ -435,7 +436,7 @@ footer {
   transition: left .32s cubic-bezier(.4,0,.2,1);
 }
 .mob-drawer.on { left: 0; }
-.mob-drawer img { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; filter: grayscale(100%); margin-bottom: 32px; }
+.mob-drawer img { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; filter: brightness(1.05); margin-bottom: 32px; }
 .mob-drawer a {
   font-size: 13px; letter-spacing: 3px; text-transform: uppercase; font-weight: 500;
   color: rgba(245,245,240,.4); padding: 16px 0; border-bottom: 1px solid var(--border);
@@ -489,11 +490,34 @@ footer {
     <a href="#about">About</a>
     <a href="#menu">Menu</a>
     <a href="#hours">Hours</a>
-    <a href="https://www.instagram.com/munchiesafterdarkng" target="_blank">Instagram</a>
-  </div>
+    </div>
   <a class="nav-cta" href="https://munchies-after-dark.daash.restaurant/1" target="_blank">Order Now</a>
   <button class="hamburger" onclick="openDrawer()">☰</button>
 </nav>
+
+<!-- ANNOUNCEMENT BANNER -->
+<div id="announceBanner" style="
+  background: var(--gold);
+  color: var(--black);
+  text-align: center;
+  padding: 11px 48px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  position: fixed;
+  top: 72px;
+  left: 0; right: 0;
+  z-index: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+">
+  <span>🍔 Open Daily 12:00 PM – 3:00 AM &nbsp;·&nbsp; 100% Halal Certified &nbsp;·&nbsp; Free Delivery on First Order</span>
+  <button onclick="document.getElementById('announceBanner').style.display='none'; document.querySelector('nav').style.top='0'; document.querySelector('.hero').style.paddingTop='72px'" style="background:none;border:none;cursor:pointer;font-size:16px;color:var(--black);opacity:.5;padding:0;line-height:1;">✕</button>
+</div>
 
 <!-- MOBILE DRAWER -->
 <div class="mob-drawer" id="drawer">
@@ -598,7 +622,7 @@ footer {
       <div class="menu-label">What We Serve</div>
       <div class="menu-h2">The Menu</div>
     </div>
-    <div class="menu-note">☪ 100% Halal &nbsp;·&nbsp; All burgers &amp; sandwiches<br>served with French fries</div>
+    
   </div>
 
   <div class="cat-pills" id="catPills">
