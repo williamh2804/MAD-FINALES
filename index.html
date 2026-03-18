@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Munchies After Dark</title>
+<meta name="description" content="Premium quality fast food. Open daily 12PM – 3AM. Lagos, Nigeria.">
+<meta property="og:title" content="Munchies After Dark">
+<meta property="og:description" content="Premium burgers, wraps & more. Open daily 12PM – 3AM.">
+<meta property="og:image" content="images/mad.png">
+<link rel="icon" href="images/logo.png" type="image/png">
+<!-- Facebook Pixel -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1382280396148574');
+fbq('track', 'PageView');
+</script>
+<noscript>
+  <img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=1382280396148574&ev=PageView&noscript=1"/>
+</noscript>
+<!-- End Facebook Pixel -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ============================================
+   MAD — Ultra Minimal Black & White
+   ============================================ */
+:root {
+  --black:  #0a0a0a;
+  --white:  #f5f5f0;
+  --grey:   #888880;
+  --border: rgba(245,245,240,.1);
+  --daash:  'https://munchies-after-dark.daash.restaurant/1';
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  background: var(--black);
+  color: var(--white);
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+  overflow-x: hidden;
+  cursor: default;
+}
+a { text-decoration: none; color: inherit; }
+button { cursor: pointer; font-family: inherit; }
+img { display: block; max-width: 100%; }
+
+/* ============ NAV ============ */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 900;
+  padding: 0 52px; height: 72px;
+  display: flex; align-items: center; justify-content: space-between;
+  transition: background .4s, border-color .4s;
+}
+nav.scrolled {
+  background: rgba(10,10,10,.96);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-logo {
+  display: flex; align-items: center; gap: 12px;
+}
+.nav-logo img {
+  width: 38px; height: 38px; border-radius: 50%; object-fit: cover;
+  filter: grayscale(100%) brightness(1.1);
+  transition: filter .3s;
+}
+nav.scrolled .nav-logo img { filter: grayscale(100%) brightness(1.3); }
+.nav-brand {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px; font-weight: 600; letter-spacing: 4px;
+  text-transform: uppercase; color: var(--white);
+}
+
+.nav-links { display: flex; align-items: center; gap: 40px; }
+.nav-links a {
+  font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
+  font-weight: 500; color: rgba(245,245,240,.5);
+  transition: color .2s;
+}
+.nav-links a:hover { color: var(--white); }
+
+.nav-cta {
+  background: var(--white); color: var(--black); border: none;
+  padding: 11px 28px; font-family: 'Montserrat', sans-serif;
+  font-size: 11px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase;
+  transition: background .2s, color .2s;
+  display: inline-block;
+}
+.nav-cta:hover { background: transparent; color: var(--white); outline: 1px solid var(--white); }
+
+.hamburger {
+  display: none; background: none; border: none;
+  color: var(--white); font-size: 22px; padding: 4px;
+}
+
+/* ============ HERO ============ */
+.hero {
+  height: 100vh; position: relative; overflow: hidden;
+  display: flex; align-items: flex-end;
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background: url('images/mad.png') center/cover no-repeat;
+  filter: grayscale(100%) brightness(.45);
+  transform: scale(1.02);
+  animation: hero-zoom 12s ease-in-out infinite alternate;
+}
+@keyframes hero-zoom {
+  from { transform: scale(1.02); }
+  to   { transform: scale(1.08); }
+}
+.hero-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(0deg, rgba(10,10,10,.92) 0%, rgba(10,10,10,.2) 50%, transparent 100%);
+}
+.hero-content {
+  position: relative; z-index: 2;
+  padding: 0 80px 80px;
+  display: flex; justify-content: space-between; align-items: flex-end; width: 100%;
+  flex-wrap: wrap; gap: 32px;
+}
+.hero-text { }
+.hero-eyebrow {
+  font-size: 11px; letter-spacing: 5px; text-transform: uppercase;
+  color: rgba(245,245,240,.5); font-weight: 500; margin-bottom: 16px;
+  display: flex; align-items: center; gap: 14px;
+}
+.hero-eyebrow::before { content:''; display:block; width:24px; height:1px; background:rgba(245,245,240,.4); }
+.hero-h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(64px, 9vw, 140px);
+  font-weight: 300; line-height: .88; letter-spacing: -1px;
+  color: var(--white); margin-bottom: 28px;
+}
+.hero-h1 em { font-style: italic; color: rgba(245,245,240,.7); }
+.hero-sub {
+  font-size: 13px; color: rgba(245,245,240,.45);
+  letter-spacing: 2px; text-transform: uppercase; line-height: 1.8;
+}
+.hero-right { display: flex; flex-direction: column; align-items: flex-end; gap: 16px; }
+.hero-order-btn {
+  background: var(--white); color: var(--black); border: none;
+  padding: 18px 48px; font-family: 'Montserrat', sans-serif;
+  font-size: 12px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase;
+  transition: all .25s; display: inline-block;
+}
+.hero-order-btn:hover { background: transparent; color: var(--white); outline: 1px solid var(--white); }
+.hero-wa {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+  color: rgba(245,245,240,.4); transition: color .2s;
+}
+.hero-wa:hover { color: var(--white); }
+
+/* scroll cue */
+.scroll-cue {
+  position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%);
+  z-index: 3; display: flex; flex-direction: column; align-items: center; gap: 8px;
+  font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+  color: rgba(245,245,240,.3); animation: fade-up 2s ease infinite;
+}
+@keyframes fade-up {
+  0%,100%{opacity:.3;transform:translateX(-50%) translateY(0);}
+  50%{opacity:.7;transform:translateX(-50%) translateY(-6px);}
+}
+.scroll-cue::after { content:'↓'; font-size:16px; }
+
+/* ============ TICKER ============ */
+.ticker {
+  background: var(--white); overflow: hidden; padding: 14px 0;
+}
+.ticker-inner { display: flex; animation: ticker 30s linear infinite; white-space: nowrap; }
+.tick {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 15px; font-weight: 400; letter-spacing: 4px;
+  text-transform: uppercase; color: var(--black);
+  padding: 0 32px; display: flex; align-items: center; gap: 24px;
+}
+.tick::after { content: '·'; opacity: .35; font-size: 20px; }
+@keyframes ticker { from{transform:translateX(0);} to{transform:translateX(-50%);} }
+
+/* ============ ABOUT STRIP ============ */
+.about-strip {
+  display: grid; grid-template-columns: 1fr 1fr;
+  min-height: 80vh;
+}
+.about-img {
+  position: relative; overflow: hidden;
+}
+.about-img img {
+  width: 100%; height: 100%; object-fit: cover;
+  filter: grayscale(100%) brightness(.7);
+  transition: transform .8s ease;
+}
+.about-strip:hover .about-img img { transform: scale(1.04); }
+.about-text {
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 80px 72px; border-left: 1px solid var(--border);
+}
+.about-label {
+  font-size: 10px; letter-spacing: 5px; text-transform: uppercase;
+  color: var(--grey); margin-bottom: 24px;
+}
+.about-h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(40px, 5vw, 72px); font-weight: 300; line-height: .95;
+  color: var(--white); margin-bottom: 28px;
+}
+.about-h2 em { font-style: italic; }
+.about-body {
+  font-size: 14px; color: rgba(245,245,240,.45); line-height: 1.9;
+  font-weight: 300; margin-bottom: 36px; max-width: 400px;
+}
+.about-stats {
+  display: flex; gap: 40px; padding-top: 32px;
+  border-top: 1px solid var(--border);
+}
+.as-n {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 48px; font-weight: 300; color: var(--white); display: block; line-height: 1;
+}
+.as-l { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--grey); margin-top: 4px; }
+
+/* ============ MENU SECTION ============ */
+.menu-section { padding: 100px 80px; }
+.menu-header {
+  display: flex; justify-content: space-between; align-items: flex-end;
+  margin-bottom: 60px; padding-bottom: 32px; border-bottom: 1px solid var(--border);
+}
+.menu-title-wrap { }
+.menu-label { font-size: 10px; letter-spacing: 5px; text-transform: uppercase; color: var(--grey); margin-bottom: 12px; }
+.menu-h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(48px, 6vw, 90px); font-weight: 300; line-height: .9; color: var(--white);
+}
+.menu-note { font-size: 12px; color: var(--grey); letter-spacing: 1px; text-align: right; line-height: 1.8; }
+
+/* Category pills */
+.cat-pills {
+  display: flex; gap: 0; overflow-x: auto; scrollbar-width: none;
+  border-bottom: 1px solid var(--border); margin-bottom: 52px;
+}
+.cat-pills::-webkit-scrollbar { display: none; }
+.cp {
+  background: none; border: none; border-bottom: 1px solid transparent;
+  color: rgba(245,245,240,.3); font-family: 'Montserrat', sans-serif;
+  font-size: 11px; font-weight: 500; letter-spacing: 3px; text-transform: uppercase;
+  padding: 12px 24px 14px; white-space: nowrap; transition: all .2s; margin-bottom: -1px;
+}
+.cp:hover { color: var(--white); }
+.cp.on { color: var(--white); border-bottom-color: var(--white); }
+
+/* Menu grid */
+.menu-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1px; background: var(--border);
+}
+.menu-grid-wrapper { background: var(--black); }
+
+.mc {
+  background: var(--black); overflow: hidden; position: relative;
+  transition: background .3s;
+}
+.mc:hover { background: #111; }
+
+.mc-img {
+  width: 100%; height: 240px; object-fit: cover;
+  filter: grayscale(100%) brightness(.75);
+  transition: transform .5s ease, filter .5s ease;
+  display: block;
+}
+.mc-ph {
+  width: 100%; height: 240px; background: #111;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 56px; filter: grayscale(100%);
+}
+.mc:hover .mc-img { transform: scale(1.04); filter: grayscale(80%) brightness(.6); }
+
+.mc-body { padding: 22px 24px 24px; }
+.mc-tag {
+  font-size: 9px; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--grey); margin-bottom: 6px; display: block;
+}
+.mc-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 26px; font-weight: 400; color: var(--white); margin-bottom: 7px; line-height: 1.1;
+}
+.mc-desc {
+  font-size: 12px; color: rgba(245,245,240,.35);
+  line-height: 1.7; font-weight: 300; margin-bottom: 18px; min-height: 42px;
+}
+.mc-foot { display: flex; justify-content: space-between; align-items: center; }
+.mc-price {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px; font-weight: 400; color: var(--white);
+}
+.mc-price span { font-size: 13px; color: var(--grey); margin-right: 1px; }
+.mc-order {
+  font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+  color: rgba(245,245,240,.3); background: none; border: none;
+  padding: 8px 0; border-bottom: 1px solid rgba(245,245,240,.2);
+  transition: all .2s; display: inline-block;
+}
+.mc-order:hover { color: var(--white); border-bottom-color: var(--white); }
+
+/* cat section header */
+.cat-sec-head {
+  grid-column: 1/-1; padding: 28px 24px 20px;
+  border-bottom: 1px solid var(--border); background: var(--black);
+  display: flex; align-items: baseline; gap: 16px;
+}
+.csh-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 32px; font-weight: 300; color: var(--white); letter-spacing: 1px;
+}
+.csh-note { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--grey); }
+
+/* hidden items */
+.mc[data-cat]:not(.visible), .cat-sec-head[data-cat]:not(.visible) { display: none; }
+
+/* ============ FULL-BLEED PHOTO ============ */
+.photo-break {
+  height: 70vh; position: relative; overflow: hidden;
+}
+.photo-break img {
+  width: 100%; height: 100%; object-fit: cover;
+  filter: grayscale(100%) brightness(.5);
+  transition: transform .6s ease;
+}
+.photo-break:hover img { transform: scale(1.03); }
+.photo-break-overlay {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(10,10,10,.3);
+}
+.photo-break-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(48px,7vw,110px); font-weight: 300;
+  letter-spacing: 8px; text-transform: uppercase;
+  color: var(--white); text-align: center; line-height: 1;
+}
+.photo-break-text em { font-style: italic; color: rgba(245,245,240,.6); display: block; font-size: .55em; letter-spacing: 12px; }
+
+/* ============ HOURS ============ */
+.hours-section {
+  display: grid; grid-template-columns: 1fr 1fr;
+  border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+}
+.hs-left {
+  padding: 72px 80px; border-right: 1px solid var(--border);
+}
+.hs-label { font-size: 10px; letter-spacing: 5px; text-transform: uppercase; color: var(--grey); margin-bottom: 20px; }
+.hs-time {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(40px, 6vw, 80px); font-weight: 300; line-height: .9; color: var(--white);
+}
+.hs-days { font-size: 12px; color: var(--grey); letter-spacing: 3px; text-transform: uppercase; margin-top: 16px; }
+.hs-right {
+  padding: 72px 80px; display: flex; flex-direction: column; justify-content: center; gap: 28px;
+}
+.hs-status {
+  display: flex; align-items: center; gap: 12px;
+  font-size: 12px; letter-spacing: 3px; text-transform: uppercase; color: var(--grey);
+}
+.status-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: #fff; animation: sdot 2s ease infinite;
+}
+.status-dot.closed { background: #555; animation: none; }
+@keyframes sdot { 0%,100%{opacity:1;} 50%{opacity:.3;} }
+.hs-ctas { display: flex; flex-direction: column; gap: 12px; }
+.hs-btn {
+  background: var(--white); color: var(--black); border: none;
+  padding: 16px 40px; font-family: 'Montserrat', sans-serif;
+  font-size: 11px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase;
+  transition: all .2s; display: inline-block; width: fit-content;
+}
+.hs-btn:hover { background: transparent; color: var(--white); outline: 1px solid var(--white); }
+.hs-btn-ghost {
+  background: none; color: rgba(245,245,240,.4); border: none;
+  padding: 10px 0; font-family: 'Montserrat', sans-serif;
+  font-size: 11px; font-weight: 500; letter-spacing: 3px; text-transform: uppercase;
+  border-bottom: 1px solid rgba(245,245,240,.15); display: inline-block; width: fit-content;
+  transition: all .2s;
+}
+.hs-btn-ghost:hover { color: var(--white); border-bottom-color: var(--white); }
+
+/* ============ FOOTER ============ */
+footer {
+  padding: 64px 80px 40px;
+  border-top: 1px solid var(--border);
+}
+.footer-top {
+  display: grid; grid-template-columns: 2fr 1fr 1fr;
+  gap: 60px; padding-bottom: 48px; border-bottom: 1px solid var(--border);
+}
+.ft-brand img { width: 52px; height: 52px; border-radius: 50%; object-fit: cover; filter: grayscale(100%); margin-bottom: 16px; }
+.ft-brand-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px; font-weight: 400; letter-spacing: 4px; color: var(--white); margin-bottom: 8px;
+}
+.ft-brand-sub { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--grey); margin-bottom: 16px; display: block; }
+.ft-brand-desc { font-size: 13px; color: rgba(245,245,240,.3); line-height: 1.9; font-weight: 300; max-width: 300px; }
+.ft-socials { display: flex; gap: 20px; margin-top: 20px; }
+.ft-soc { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: rgba(245,245,240,.3); transition: color .2s; }
+.ft-soc:hover { color: var(--white); }
+.ft-col-title { font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: var(--grey); margin-bottom: 20px; }
+.ft-col a, .ft-col p { font-size: 13px; color: rgba(245,245,240,.3); line-height: 2.4; display: block; transition: color .2s; font-weight: 300; }
+.ft-col a:hover { color: var(--white); }
+.footer-btm {
+  padding-top: 28px; display: flex; justify-content: space-between; align-items: center;
+}
+.footer-btm p { font-size: 11px; color: rgba(245,245,240,.2); letter-spacing: 1px; }
+
+/* ============ MOBILE NAV DRAWER ============ */
+.mob-drawer {
+  position: fixed; top: 0; left: -100%; width: 80%; max-width: 300px; height: 100vh;
+  background: #0d0d0d; border-right: 1px solid var(--border);
+  z-index: 1000; display: flex; flex-direction: column; padding: 36px 28px;
+  transition: left .32s cubic-bezier(.4,0,.2,1);
+}
+.mob-drawer.on { left: 0; }
+.mob-drawer img { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; filter: grayscale(100%); margin-bottom: 32px; }
+.mob-drawer a {
+  font-size: 13px; letter-spacing: 3px; text-transform: uppercase; font-weight: 500;
+  color: rgba(245,245,240,.4); padding: 16px 0; border-bottom: 1px solid var(--border);
+  transition: color .2s;
+}
+.mob-drawer a:hover { color: var(--white); }
+.mob-x { position: absolute; top: 20px; right: 20px; background: none; border: none; color: rgba(245,245,240,.4); font-size: 20px; }
+.mob-order {
+  margin-top: 28px; background: var(--white); color: var(--black); border: none;
+  padding: 14px; font-family: 'Montserrat', sans-serif; font-size: 11px;
+  font-weight: 600; letter-spacing: 3px; text-transform: uppercase; display: block; text-align: center;
+}
+
+/* overlay */
+.overlay { position: fixed; inset: 0; background: rgba(0,0,0,.7); z-index: 900; opacity: 0; pointer-events: none; transition: opacity .3s; }
+.overlay.on { opacity: 1; pointer-events: all; }
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 900px) {
+  nav { padding: 0 24px; }
+  .nav-links { display: none; }
+  .nav-cta { display: none; }
+  .hamburger { display: block; }
+  .hero-content { padding: 0 28px 60px; flex-direction: column; align-items: flex-start; }
+  .hero-right { align-items: flex-start; }
+  .about-strip { grid-template-columns: 1fr; }
+  .about-img { height: 50vw; }
+  .about-text { padding: 52px 28px; border-left: none; border-top: 1px solid var(--border); }
+  .menu-section { padding: 64px 24px; }
+  .menu-header { flex-direction: column; align-items: flex-start; gap: 12px; }
+  .menu-note { text-align: left; }
+  .hours-section { grid-template-columns: 1fr; }
+  .hs-left { padding: 52px 28px; border-right: none; border-bottom: 1px solid var(--border); }
+  .hs-right { padding: 48px 28px; }
+  footer { padding: 52px 28px 32px; }
+  .footer-top { grid-template-columns: 1fr; gap: 40px; }
+  .footer-btm { flex-direction: column; gap: 8px; text-align: center; }
+  .photo-break { height: 50vw; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a class="nav-logo" href="#">
+    <img src="images/logo.png" alt="MAD">
+    <span class="nav-brand">Munchies After Dark</span>
+  </a>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#menu">Menu</a>
+    <a href="#hours">Hours</a>
+    <a href="https://www.instagram.com/munchiesafterdarkng" target="_blank">Instagram</a>
+  </div>
+  <a class="nav-cta" href="https://munchies-after-dark.daash.restaurant/1" target="_blank">Order Now</a>
+  <button class="hamburger" onclick="openDrawer()">☰</button>
+</nav>
+
+<!-- MOBILE DRAWER -->
+<div class="mob-drawer" id="drawer">
+  <button class="mob-x" onclick="closeDrawer()">✕</button>
+  <img src="images/logo.png" alt="MAD">
+  <a href="#about" onclick="closeDrawer()">About</a>
+  <a href="#menu" onclick="closeDrawer()">Menu</a>
+  <a href="#hours" onclick="closeDrawer()">Hours</a>
+  <a href="https://www.instagram.com/munchiesafterdarkng" target="_blank">Instagram</a>
+  <a class="mob-order" href="https://munchies-after-dark.daash.restaurant/1" target="_blank">Order Now</a>
+</div>
+<div class="overlay" id="overlay" onclick="closeDrawer()"></div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-text">
+      <div class="hero-eyebrow">Cloud Kitchen · Lagos · Est. 2025 · Halal</div>
+      <h1 class="hero-h1">
+        Munchies<br>
+        <em>After Dark.</em>
+      </h1>
+      <div class="hero-sub">Premium Quality &nbsp;·&nbsp; Open Daily 12PM – 3AM</div>
+    </div>
+    <div class="hero-right">
+      <a class="hero-order-btn" href="https://munchies-after-dark.daash.restaurant/1" target="_blank" onclick="fbq('track','InitiateCheckout')">Order Now</a>
+      <a class="hero-wa" href="https://wa.me/2347047792000" target="_blank">
+        Or order via WhatsApp →
+      </a>
+    </div>
+  </div>
+  <div class="scroll-cue">Scroll</div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-inner">
+    <span class="tick">Munchies After Dark</span>
+    <span class="tick">100% Halal Certified</span>
+    <span class="tick">Burgers</span>
+    <span class="tick">Wraps</span>
+    <span class="tick">Pasta</span>
+    <span class="tick">Desserts</span>
+    <span class="tick">Open Daily 12PM – 3AM</span>
+    <span class="tick">Cloud Kitchen Lagos</span>
+    <span class="tick">Munchies After Dark</span>
+    <span class="tick">100% Halal Certified</span>
+    <span class="tick">Burgers</span>
+    <span class="tick">Wraps</span>
+    <span class="tick">Pasta</span>
+    <span class="tick">Desserts</span>
+    <span class="tick">Open Daily 12PM – 3AM</span>
+    <span class="tick">Cloud Kitchen Lagos</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about-strip" id="about">
+  <div class="about-img">
+    <img src="images/lucy.jpg" alt="MAD Burger">
+  </div>
+  <div class="about-text">
+    <div class="about-label">Our Story</div>
+    <h2 class="about-h2">Not your<br><em>typical</em><br>burger place.</h2>
+    <p class="about-body">
+      Born in January 2025 with one clear mission — premium quality fast food at pocket friendly prices. Every item is made fresh, every order handled with care. 100% Halal certified, every time.
+    </p>
+    <div class="about-stats">
+      <div>
+        <span class="as-n">30+</span>
+        <div class="as-l">Menu Items</div>
+      </div>
+      <div>
+        <span class="as-n">15h</span>
+        <div class="as-l">Open Daily</div>
+      </div>
+      <div>
+        <span class="as-n">☪</span>
+        <div class="as-l">Halal Certified</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FULL BLEED -->
+<div class="photo-break">
+  <img src="images/truffle.jpg" alt="Truffle Rush">
+  <div class="photo-break-overlay">
+    <div class="photo-break-text">
+      Truffle Rush
+      <em>₦16,500</em>
+    </div>
+  </div>
+</div>
+
+<!-- MENU -->
+<section class="menu-section" id="menu">
+  <div class="menu-header">
+    <div class="menu-title-wrap">
+      <div class="menu-label">What We Serve</div>
+      <div class="menu-h2">The Menu</div>
+    </div>
+    <div class="menu-note">☪ 100% Halal &nbsp;·&nbsp; All burgers &amp; sandwiches<br>served with French fries</div>
+  </div>
+
+  <div class="cat-pills" id="catPills">
+    <button class="cp on" onclick="filterCat('burgers',this)">Burgers</button>
+    <button class="cp" onclick="filterCat('sandwiches',this)">Sandwiches</button>
+    <button class="cp" onclick="filterCat('wraps',this)">Wraps</button>
+    <button class="cp" onclick="filterCat('starters',this)">Starters</button>
+    <button class="cp" onclick="filterCat('pasta',this)">Pasta</button>
+    <button class="cp" onclick="filterCat('sweet',this)">Sweet Tooth</button>
+    <button class="cp" onclick="filterCat('shakes',this)">Shakes</button>
+    <button class="cp" onclick="filterCat('drinks',this)">Drinks</button>
+  </div>
+
+  <div class="menu-grid-wrapper">
+    <div class="menu-grid" id="menuGrid">
+
+      <!-- BURGERS -->
+      <div class="cat-sec-head visible" data-cat="burgers"><span class="csh-name">Burgers</span><span class="csh-note">Served with French fries</span></div>
+
+      <div class="mc visible" data-cat="burgers"><img class="mc-img" src="images/og.jpg" alt="OG"><div class="mc-body"><span class="mc-tag">Classic</span><div class="mc-name">OG</div><div class="mc-desc">Juicy beef, melted cheddar, iceberg lettuce, tomato, grilled onions, dill pickles and cocktail sauce.</div><div class="mc-foot"><div class="mc-price"><span>₦</span>10,600</div><a class="mc-order" href="https://munchies-after-dark.daash.restaurant/1" target="_blank">Order →</a></div></div></div>
+
+      <div class="mc visible" data-cat="burgers"><img class="mc-img" src="images/lucy.jpg" alt="Lucy"><div class="mc-body"><span class="mc-tag">Beef</span><div class="mc-name">Lucy</div><div class="mc-desc">Cheese stuffed patty, beef bacon, crunchy onion rings, iceberg lettuce with dijonaise and ketchup sauce.</div><div class="mc-foot"><div class="mc-price"><span>₦</span>12,750</div><a class="mc-order" href="https://munchies-after-dark.daash.restaurant/1" target="_blank">Order →</a></div></div></div>
+
+      <div class="mc visible" data-cat="burgers"><img class="mc-img" src="images/mad.jpg" alt="MAD"><div class="mc-body"><span class="mc-tag">Signature</span><div class="mc-name">MAD</div><div class="mc-desc">Juicy beef with breaded cheddar, beef bacon, dill pickles and our house MAD sauce paired with BBQ.</div><div class="mc-foot"><div class="mc-price"><span>₦</span>15,400</div><a class="mc-order" href="https://munchies-after-dark.daash.restaurant/1" target="_blank">Order →</a></div></div></div>
+
+      <div class="mc visible" data-cat="burgers"><img class="mc-img" src="images/chacha.jpg" alt="Cha Cha"><div class="mc-body"><span class="mc-tag">Beef</span><div class="mc-name">Cha Cha</div><div class="mc-desc">Juicy beef, cheddar, sauteed mushrooms, grilled tomato and onions, crisp chips and our house MAD sauce.</div><div class="mc-foot"><div class="mc-price"><span>₦</span>12,900</div><a class="mc-order" href="https://munchies-after-dark.daash.restaurant/1" target="_blank">Order →</a></div></div></div>
+
+      <div class="mc visible" data-cat="burgers"><img class="mc-img" src="images/island2.jpg" alt="Chicken B"><div class="mc-body"><span class="mc-tag">Chicken</span><div class="mc-name">Chicken B</div><div class="mc-desc">Choice of grilled or crispy chicken, iceberg lettuce, dill pickles, fresh mushroom, tomato with garlic mayo.</div><div class="mc-foot"><div class="mc-price"><span>₦</span>9,200</div><a class="mc-order" href="https://munchies-after-dark.daash.restaurant/1" target="_blank">Order →</a></div></div></div>
+
+      <div class="mc visible" data-cat="burgers"><img class="mc-img" src="images/island.jpg" alt="Island"><div class="mc-body"><span class="mc-tag">Chicken</span><div class="mc-name">Island</div><div class="mc-desc">Crispy chicken, mix cheese, beef pepperoni, iceberg lettuce, dill pickles and thousand island sauce.</div><div class="mc-foot"><div class="mc-price"><span>₦</span>10,800</div><a class="mc-order" href="https://munchies-after-dark.daash.restaurant/1" target="_blank">Order →</a></div></div></div>
+
+      <div class="mc visible" data-cat="burgers"><img class="mc-img" src="images/truffle.jpg" alt="Truffle Rush"><div class="mc-body"><span class="mc-tag">Premium</span><div class="mc-name">Truffle Rush</div><div class="mc-desc">Juicy beef patty with creamy truffle mayo, fresh mushrooms, melted Swiss cheese and fresh rocket leaves.</div><div class="mc-foot"><div class="mc-price"><span>₦</span>16,500</div><a class="mc-order" href="https://munchies-after-dark.daash.restaurant/1" target="_blank">Order →</a></div></div></div>
+
+      <div class="mc visible" data-cat="burgers"><img class="mc-img" src="images/mex.jpg" alt="Mex"><div class="mc-body"><span class="mc-tag">Spicy</span><div class="mc-name">Mex</div><div class="mc-desc">Juicy beef with sauteed bell peppers, mix cheese, iceberg lettuce, avocado slices, jalapeños and Cajun sauce.</div><div class="mc-foot"><div class="mc-price"><span>₦</span>11,900</div><a class="mc-order" href="https://munchies-after-dark.daash.restaurant/1" target="_blank">Order →</a></div></div></div>
+
+      <div class="mc visible" data-cat="burgers"><img class="mc-img" src="images/afro.jpg" alt="The Afro"><div class="mc-body"><span class="mc-tag">Local Favourite</span><div class="mc-name">The Afro</div><div class="mc-desc">Juicy beef with suya spices, onions, tomato and spicy coleslaw with suya mayo sauce.</div><div class="mc-foot"><div class="mc-price"><span>₦</span>9,200</div><a class="mc-order" href="https://munchies-after-dark.daash.restaurant/1" target="_blank">Order →</a></div></div></div>
+
+      <div class="mc visible" data-cat="burgers"><img class="mc-img" src="images/mighty.jpg" alt="Mozz B"><div class="mc-body"><span class="mc-tag">Vegetarian Option</span><div class="mc-name">Mozz B</div><div class="mc-desc">Crispy breaded mozzarella patty with cocktail sauce, iceberg lettuce, juicy tomato and dill pickles.</div><div class="mc-foot"><div class="mc-price"><span>₦</span>11,500</div><a class="mc-order" href="https://munchies-after-dark.daash.restaurant/1" target="_blank">Order →</a></div></div></div>
+
+      <div class="mc visible" data-cat="burgers"><img class="mc-img" src="images/mighty.jpg" alt="Mighty"><div class="mc-body"><span class="mc-tag">Chicken</span><div class="mc-name">Mighty</div><div class="mc-desc">Crispy chicken, breaded mozzarella, iceberg lettuce, dill pickles and BBQ mayo sauce.</div><div class="mc-foot"><div class="mc-price"><span>₦</span>12,900</div><a class="mc-order" href="https://munchies-after-dark.daash.restaurant/1" target="_blank">Order →</a></div></div></div>
+
+      <div class="mc visible" data-cat="burgers"><img class="mc-img" src="images/bliss.jpg" alt="Bliss"><div class="mc-body"><span class="mc-tag">Chicken</span><div class="mc-name">Bliss</div><div class="mc-desc">Crispy chicken, mix cheese, coleslaw mix, dill pickles with ranch mayo sauce.</div><div class="mc-foot"><div class="mc-price"><span>₦</span>10,250</div><a class="mc-order" href="https://munchies-after-dark.daash.restaurant/1" target="_blank">Order →</a></div></div></div>
+
+      <div class="mc visible" data-cat="burgers"><img class="mc-img" src="images/flame.jpg" alt="Flame"><div class="mc-body"><span class="mc-tag">Spicy</span><div class="mc-name">Flame</div><div class="mc-desc">Crispy chicken, jalapeños, iceberg lettuce and buffalo mayo paired with BBQ sauce.</div><div class="mc-foot"><div class="mc-price"><span>₦</span>9,700</div><a class="mc-order" href="https://munchies-after-dark.daash.restaurant/1" target="_blank">Order →</a></div></div></div>
+
+      <div class="mc visible" data-cat="burgers"><img class="mc-img" src="images/classic_beef.jpg" alt="Classic Beef"><div class="mc-body"><span class="mc-tag">Classic</span><div class="mc-name">Classic Beef</div><div class="mc-desc">Juicy grilled beef patty, fresh onions and ketchup.</div><div class="mc-foot"><div class="mc-price"><span>₦</span>3,000</div><a class="mc-order" href="https://munchies-after-dark.daash.restaurant/1" target="_blank">Order →</a></div></div></div>
+
+      <div class="mc visible" data-cat="burgers"><img class="mc-img" src="images/classic_chk.jpg" alt="Classic Chicken"><div class="mc-body"><span class="mc-tag">Classic</span><div class="mc-name">Classic Chicken</div><div class="mc-desc">Crispy chicken fillet, creamy mayo and iceberg lettuce.</div><div class="mc-foot"><div class="mc-price"><span>₦</span>3,200</div><a class="mc-order" href="https://munchies-after-dark.daash.restaurant/1" target="_blank">Order →</a></div></div></div>
+
+      <div class="mc visible" data-cat="burgers"><img class="mc-img" src="images/classic_cheese.jpg" alt="Classic Cheese"><div class="mc-body"><span class="mc-tag">Classic</span><div class="mc-name">Classic Cheese</div><div class="mc-desc">Juicy grilled beef patty, melted cheese, ketchup and dill pickles.</div><div class="mc-foot"><div class="mc-price"><span>₦</span>3,700</div><a class="mc-order" href="https://munchies-after-dark.daash.restaurant/1" target="_blank">Order →</a></div></div></div>
+
+      <!-- SANDWICHES -->
+      <div class="cat-sec-head" data-cat="sandwiches"><span class="csh-name">Sandwiches</span><span class="csh-note">Served with French fries</span></div>
+      <div class="mc" data-cat="sandwiches"><img class="mc-img" src="images/fuego.jpg" alt="Fuego"><div class="mc-body"><span class="mc-tag">Chicken</span><div class="mc-name">Fuego</div><div class="mc-desc">Sauteed fajita chicken with mix bell pepper and onions, mozzarella cheese with guacamole sauce.</div><div class="mc-foot"><div class="mc-price"><span>₦</span>12,000</div><a class="mc-order" href="https://munchies-after-dark.daash.restaurant/1" target="_blank">Order →</a></div></div></div>
+      <div class="mc" data-cat="sandwiches"><img class="mc-img" src="images/steakhouse.jpg" alt="Steakhouse Classic"><div class="mc-body"><span class="mc-tag">Popular</span><div class="mc-name">Steakhouse Classic</div><div class="mc-desc">Juicy steak slices, sauteed mushrooms, grilled tomato and onions, cheddar and house MAD sauce.</div><div class="mc-foot"><div class="mc-price"><span>₦</span>13,500</div><a class="mc-order" href="https://munchies-after-dark.daash.restaurant/1" target="_blank">Order →</a></div></div></div>
+      <div class="mc" data-cat="sandwiches"><img class="mc-img" src="images/chicken_sub.jpg" alt="Chicken Sub"><div class="mc-body"><span class="mc-tag">Chicken</span><div class="mc-name">Chicken Sub</div><div class="mc-desc">Grilled chicken, iceberg lettuce, tomato, dill pickles, fresh mushroom with garlic mayo sauce.</div><div class="mc-foot"><div class="mc-price"><span>₦</span>11,000</div><a class="mc-order" href="https://munchies-after-dark.daash.restaurant/1" target="_blank">Order →</a></div></div></div>
+
+      <!-- WRAPS -->
+      <div class="cat-sec-head" data-cat="wraps"><span class="csh-name">Wraps</span></div>
+      <div class="mc" data-cat="wraps"><img class="mc-img" src="images/bbq_crunch.jpg" alt="BBQ Crunch"><div class="mc-body"><span class="mc-tag">Chicken</span><div class="mc-name">BBQ Crunch</div><div class="mc-desc">Crispy chicken in a soft tortilla with BBQ, cheddar, honey mustard and ranch sauce, topped with crispy chips.</div><div class="mc-foot"><div class="mc-price"><span>₦</span>10,200</div><a class="mc-order" href="https://munchies-after-dark.daash.restaurant/1" target="_blank">Order →</a></div></div></div>
+      <div class="mc" data-cat="wraps"><img class="mc-img" src="images/wrap1.jpg" alt="Honey Crunch"><div class="mc-body"><span class="mc-tag">Chicken</span><div class="mc-name">Honey Crunch</div><div class="mc-desc">Crispy chicken with honey mustard and ranch sauce, dill pickles, crispy chips and iceberg lettuce.</div><div class="mc-foot"><div class="mc-price"><span>₦</span>10,700</div><a class="mc-order" href="https://munchies-after-dark.daash.restaurant/1" target="_blank">Order →</a></div></div></div>
+      <div class="mc" data-cat="wraps"><img class="mc-img" src="images/the_crunch.jpg" alt="The Crunch"><div class="mc-body"><span class="mc-tag">Bestseller</span><div class="mc-name">The Crunch</div><div class="mc-desc">Crispy chicken with cocktail sauce, dill pickles, mix cheese, iceberg lettuce and sweet corn.</div><div class="mc-foot"><div class="mc-price"><span>₦</span>11,900</div><a class="mc-order" href="https://munchies-after-dark.daash.restaurant/1" target="_blank">Order →</a></div></div></div>
+
+      <!-- STARTERS -->
+      <div class="cat-sec-head" data-cat="starters"><span class="csh-name">Starters</span></div>
+      <div class="mc" data-cat="starters"><img class="mc-img" src="images/wings.jpg" alt="Wings"><div class="mc-body"><span class="mc-tag">Chicken</span><div class="mc-name">Flavorful Wings</div><div class="mc-desc">Six juicy chicken wings with your choice of BBQ, Buffalo, Naija Pepper or Honey Mustard dip.</div><div class="mc-foot"><div class="mc-price"><span>₦</span>7,000</div><a class="mc-order" href="https://munchies-after-dark.daash.restaurant/1" target="_blank">Order →</a></div></div></div>
+      <div class="mc" data-cat="starters"><img class="mc-img" src="images/tenders.jpg" alt="Golden Tenders"><div class="mc-body"><span class="mc-tag">Chicken</span><div class="mc-name">Golden Tenders</div><div class="mc-desc">Five pieces of breaded chicken served with honey mustard dip.</div><div class="mc-foot"><div class="mc-price"><span>₦</span>7,600</div><a class="mc-order" href="https://munchies-after-dark.daash.restaurant/1" target="_blank">Order →</a></div></div></div>
+      <div class="mc" data-cat="starters"><img class="mc-img" src="images/mozz_bricks.jpg" alt="Mozzarella Bricks"><div class="mc-body"><span class="mc-tag">Snack</span><div class="mc-name">Mozzarella Bricks</div><div class="mc-desc">Four pieces of cheesy mozzarella bricks served with cocktail dip.</div><div class="mc-foot"><div class="mc-price"><span>₦</span>7,900</div><a class="mc-order" href="https://munchies-after-dark.daash.restaurant/1" target="_blank">Order →</a></div></div></div>
+      <div class="mc" data-cat="starters"><img class="mc-img" src="images/beef_roll.jpg" alt="Beef Rolls"><div class="mc-body"><span class="mc-tag">Beef</span><div class="mc-name">Beef Rolls</div><div class="mc-desc">Four pieces of stuffed pulled beef with cheese and mixed vegetables, served with BBQ dip.</div><div class="mc-foot"><div class="mc-price"><span>₦</span>9,200</div><a class="mc-order" href="https://munchies-after-dark.daash.restaurant/1" target="_blank">Order →</a></div></div></div>
+      <div class="mc" data-cat="starters"><img class="mc-img" src="images/macon.jpg" alt="Macon Bites"><div class="mc-body"><span class="mc-tag">Spicy</span><div class="mc-name">Macon Bites</div><div class="mc-desc">Four pieces of mix cheese, jalapeño and beef bacon. Served with BBQ dip.</div><div class="mc-foot"><div class="mc-price"><span>₦</span>8,100</div><a class="mc-order" href="https://munchies-after-dark.daash.restaurant/1" target="_blank">Order →</a></div></div></div>
+      <div class="mc" data-cat="starters"><img class="mc-img" src="images/onion_rings.jpg" alt="Onion Rings"><div class="mc-body"><span class="mc-tag">Snack</span><div class="mc-name">Onion Rings</div><div class="mc-desc">Eight golden onion rings served with ranch mayo dip.</div><div class="mc-foot"><div class="mc-price"><span>₦</span>5,400</div><a class="mc-order" href="https://munchies-after-dark.daash.restaurant/1" target="_blank">Order →</a></div></div></div>
+      <div class="mc" data-cat="starters"><img class="mc-img" src="images/sampler.jpg" alt="MAD Sampler"><div class="mc-body"><span class="mc-tag">Best Value</span><div class="mc-name">MAD Sampler</div><div class="mc-desc">Wings, onion rings, tenders, beef rolls, mozzarella bricks and French fries. Served with 3 dips.</div><div class="mc-foot"><div class="mc-price"><span>₦</span>17,500</div><a class="mc-order" href="https://munchies-after-dark.daash.restaurant/1" target="_blank">Order →</a></div></div></div>
+
+      <!-- PASTA -->
+      <div class="cat-sec-head" data-cat="pasta"><span class="csh-name">Pasta</span></div>
+      <div class="mc" data-cat="pasta"><img class="mc-img" src="images/beefy_spag.jpg" alt="Beefy Spaghetti"><div class="mc-body"><span class="mc-tag">Spicy</span><div class="mc-name">Beefy Spaghetti</div><div class="mc-desc">Classic spaghetti with spicy tomato beef sauce.</div><div class="mc-foot"><div class="mc-price"><span>₦</span>8,000</div><a class="mc-order" href="https://munchies-after-dark.daash.restaurant/1" target="_blank">Order →</a></div></div></div>
+      <div class="mc" data-cat="pasta"><img class="mc-img" src="images/creamy_chk.jpg" alt="Creamy Chicken"><div class="mc-body"><span class="mc-tag">Chicken</span><div class="mc-name">Creamy Chicken</div><div class="mc-desc">Spaghetti in a creamy sauce with sautéed fresh mushrooms and chicken.</div><div class="mc-foot"><div class="mc-price"><span>₦</span>9,200</div><a class="mc-order" href="https://munchies-after-dark.daash.restaurant/1" target="_blank">Order →</a></div></div></div>
+      <div class="mc" data-cat="pasta"><img class="mc-img" src="images/bollywood.jpg" alt="Bollywood"><div class="mc-body"><span class="mc-tag">Chef's Pick</span><div class="mc-name">Bollywood</div><div class="mc-desc">Spaghetti in a rich curry sauce with sautéed prawns topped with crushed peanuts.</div><div class="mc-foot"><div class="mc-price"><span>₦</span>10,500</div><a class="mc-order" href="https://munchies-after-dark.daash.restaurant/1" target="_blank">Order →</a></div></div></div>
+
+      <!-- SWEET TOOTH -->
+      <div class="cat-sec-head" data-cat="sweet"><span class="csh-name">Sweet Tooth</span></div>
+      <div class="mc" data-cat="sweet"><img class="mc-img" src="images/chocoloco.jpg" alt="Chocoloco"><div class="mc-body"><span class="mc-tag">Dessert</span><div class="mc-name">Chocoloco</div><div class="mc-desc">Stuffed with fresh banana and rich Belgian chocolate, drizzled with smooth chocolate.</div><div class="mc-foot"><div class="mc-price"><span>₦</span>8,000</div><a class="mc-order" href="https://munchies-after-dark.daash.restaurant/1" target="_blank">Order →</a></div></div></div>
+      <div class="mc" data-cat="sweet"><img class="mc-img" src="images/oreocrush.jpg" alt="Oreo Crush"><div class="mc-body"><span class="mc-tag">Fan Favourite</span><div class="mc-name">Oreo Crush</div><div class="mc-desc">Stuffed with crushed Oreos and Belgian milk chocolate, drizzled with smooth Belgian white chocolate.</div><div class="mc-foot"><div class="mc-price"><span>₦</span>9,200</div><a class="mc-order" href="https://munchies-after-dark.daash.restaurant/1" target="_blank">Order →</a></div></div></div>
+      <div class="mc" data-cat="sweet"><img class="mc-img" src="images/berrywhite.jpg" alt="Berry White"><div class="mc-body"><span class="mc-tag">Dessert</span><div class="mc-name">Berry White</div><div class="mc-desc">Loaded with Belgian white chocolate, topped with fresh strawberries and vibrant strawberry sauce.</div><div class="mc-foot"><div class="mc-price"><span>₦</span>9,800</div><a class="mc-order" href="https://munchies-after-dark.daash.restaurant/1" target="_blank">Order →</a></div></div></div>
+
+      <!-- SHAKES -->
+      <div class="cat-sec-head" data-cat="shakes"><span class="csh-name">Shakes</span></div>
+      <div class="mc" data-cat="shakes"><img class="mc-img" src="images/all_shakes.jpg" alt="Classic Vanilla"><div class="mc-body"><span class="mc-tag">Shake</span><div class="mc-name">Classic Vanilla</div><div class="mc-desc">Creamy classic vanilla milkshake.</div><div class="mc-foot"><div class="mc-price"><span>₦</span>6,000</div><a class="mc-order" href="https://munchies-after-dark.daash.restaurant/1" target="_blank">Order →</a></div></div></div>
+      <div class="mc" data-cat="shakes"><img class="mc-img" src="images/shake_choc.jpg" alt="Oreo Dream"><div class="mc-body"><span class="mc-tag">Shake</span><div class="mc-name">Oreo Dream</div><div class="mc-desc">Thick and creamy Oreo milkshake.</div><div class="mc-foot"><div class="mc-price"><span>₦</span>6,000</div><a class="mc-order" href="https://munchies-after-dark.daash.restaurant/1" target="_blank">Order →</a></div></div></div>
+      <div class="mc" data-cat="shakes"><img class="mc-img" src="images/shake_straw.jpg" alt="Strawberry Splash"><div class="mc-body"><span class="mc-tag">Shake</span><div class="mc-name">Strawberry Splash</div><div class="mc-desc">Fresh and fruity strawberry milkshake.</div><div class="mc-foot"><div class="mc-price"><span>₦</span>6,000</div><a class="mc-order" href="https://munchies-after-dark.daash.restaurant/1" target="_blank">Order →</a></div></div></div>
+      <div class="mc" data-cat="shakes"><img class="mc-img" src="images/shake_choc.jpg" alt="MAD Chocolate"><div class="mc-body"><span class="mc-tag">Popular</span><div class="mc-name">MAD Chocolate</div><div class="mc-desc">Rich and indulgent chocolate milkshake.</div><div class="mc-foot"><div class="mc-price"><span>₦</span>6,000</div><a class="mc-order" href="https://munchies-after-dark.daash.restaurant/1" target="_blank">Order →</a></div></div></div>
+
+      <!-- DRINKS -->
+      <div class="cat-sec-head" data-cat="drinks"><span class="csh-name">Cold Beverages</span></div>
+      <div class="mc" data-cat="drinks"><div class="mc-ph">🥤</div><div class="mc-body"><span class="mc-tag">Drink</span><div class="mc-name">Soft Drink</div><div class="mc-desc">Ask your delivery rider for available options.</div><div class="mc-foot"><div class="mc-price"><span>₦</span>1,200</div><a class="mc-order" href="https://munchies-after-dark.daash.restaurant/1" target="_blank">Order →</a></div></div></div>
+      <div class="mc" data-cat="drinks"><div class="mc-ph">🍊</div><div class="mc-body"><span class="mc-tag">Drink</span><div class="mc-name">Five Alive</div><div class="mc-desc">Refreshing Five Alive juice drink.</div><div class="mc-foot"><div class="mc-price"><span>₦</span>1,200</div><a class="mc-order" href="https://munchies-after-dark.daash.restaurant/1" target="_blank">Order →</a></div></div></div>
+      <div class="mc" data-cat="drinks"><div class="mc-ph">💧</div><div class="mc-body"><span class="mc-tag">Drink</span><div class="mc-name">Water</div><div class="mc-desc">Still bottled water.</div><div class="mc-foot"><div class="mc-price"><span>₦</span>900</div><a class="mc-order" href="https://munchies-after-dark.daash.restaurant/1" target="_blank">Order →</a></div></div></div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PHOTO BREAK 2 -->
+<div class="photo-break">
+  <img src="images/all_shakes.jpg" alt="Shakes">
+  <div class="photo-break-overlay">
+    <div class="photo-break-text">
+      The Shakes
+      <em>₦6,000 each</em>
+    </div>
+  </div>
+</div>
+
+<!-- HOURS -->
+<section class="hours-section" id="hours">
+  <div class="hs-left">
+    <div class="hs-label">We're Open</div>
+    <div class="hs-time">12:00 PM<br>— 3:00 AM</div>
+    <div class="hs-days">Every Day of the Week</div>
+  </div>
+  <div class="hs-right">
+    <div class="hs-status">
+      <span class="status-dot" id="statusDot"></span>
+      <span id="statusText">Checking...</span>
+    </div>
+    <div class="hs-ctas">
+      <a class="hs-btn" href="https://munchies-after-dark.daash.restaurant/1" target="_blank">Order Now</a>
+      <a class="hs-btn-ghost" href="https://wa.me/2347047792000" target="_blank">WhatsApp Us →</a>
+    </div>
+    <div style="font-size:12px;color:rgba(245,245,240,.25);letter-spacing:1px;line-height:1.8;">
+      ☪ 100% Halal Certified<br>
+      @munchiesafterdarkng<br>
+      +234 704 779 2000
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="ft-brand">
+      <img src="images/logo.png" alt="MAD">
+      <div class="ft-brand-name">Munchies After Dark</div>
+      <span class="ft-brand-sub">Cloud Kitchen · Lagos · Est. 2025</span>
+      <p class="ft-brand-desc">Premium quality fast food, top notch service and pocket friendly prices. 100% Halal Certified.</p>
+      <div class="ft-socials">
+        <a class="ft-soc" href="https://www.instagram.com/munchiesafterdarkng" target="_blank">Instagram</a>
+        <a class="ft-soc" href="https://wa.me/2347047792000" target="_blank">WhatsApp</a>
+        <a class="ft-soc" href="https://munchies-after-dark.daash.restaurant/1" target="_blank">Order</a>
+      </div>
+    </div>
+    <div class="ft-col">
+      <div class="ft-col-title">Hours</div>
+      <p>Open Every Day</p>
+      <p>12:00 PM – 3:00 AM</p>
+    </div>
+    <div class="ft-col">
+      <div class="ft-col-title">Contact</div>
+      <a href="https://www.instagram.com/munchiesafterdarkng" target="_blank">@munchiesafterdarkng</a>
+      <a href="https://wa.me/2347047792000" target="_blank">+234 704 779 2000</a>
+      <a href="https://munchies-after-dark.daash.restaurant/1" target="_blank">Order Online</a>
+    </div>
+  </div>
+  <div class="footer-btm">
+    <p>© 2025 Munchies After Dark. All rights reserved.</p>
+    <p>Lagos, Nigeria</p>
+  </div>
+</footer>
+
+<script>
+/* ===== NAV SCROLL ===== */
+window.addEventListener('scroll', () => {
+  document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 60);
+}, { passive: true });
+
+/* ===== HOURS STATUS ===== */
+function checkHours() {
+  const now  = new Date();
+  const mins = now.getHours() * 60 + now.getMinutes();
+  const adj  = mins < 720 ? mins + 1440 : mins;
+  const open = adj >= 720 && adj < 1620;
+  const dot  = document.getElementById('statusDot');
+  const txt  = document.getElementById('statusText');
+  dot.className = open ? 'status-dot' : 'status-dot closed';
+  txt.textContent = open ? 'Open Now — Until 3:00 AM' : 'Closed — Opens at 12:00 PM';
+}
+checkHours();
+setInterval(checkHours, 60000);
+
+/* ===== PIXEL TRACKING ===== */
+function trackOrder(itemName) {
+  if (typeof fbq !== 'undefined') {
+    fbq('track', 'InitiateCheckout', { content_name: itemName, content_category: 'Food Order' });
+  }
+}
+function trackMenuView(cat) {
+  if (typeof fbq !== 'undefined') {
+    fbq('track', 'ViewContent', { content_name: cat, content_category: 'Menu' });
+  }
+}
+
+/* ===== MENU FILTER ===== */
+function filterCat(cat, btn) {
+  document.querySelectorAll('.cp').forEach(b => b.classList.remove('on'));
+  btn.classList.add('on');
+  document.querySelectorAll('.mc, .cat-sec-head').forEach(el => {
+    if (el.dataset.cat === cat) {
+      el.classList.add('visible');
+    } else {
+      el.classList.remove('visible');
+    }
+  });
+  trackMenuView(cat);
+}
+
+/* ===== TRACK ALL ORDER LINKS ===== */
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.mc-order, .hs-btn, .nav-cta, .mob-order').forEach(link => {
+    link.addEventListener('click', () => {
+      const name = link.closest('.mc')?.querySelector('.mc-name')?.textContent || 'Menu';
+      trackOrder(name);
+    });
+  });
+});
+
+/* ===== MOBILE DRAWER ===== */
+function openDrawer() {
+  document.getElementById('drawer').classList.add('on');
+  document.getElementById('overlay').classList.add('on');
+}
+function closeDrawer() {
+  document.getElementById('drawer').classList.remove('on');
+  document.getElementById('overlay').classList.remove('on');
+}
+</script>
+</body>
+</html>
